@@ -1,0 +1,45 @@
+{
+  "site": {
+    "name": "MuniGrabby",
+    "topMenu": [
+      "회원가입",
+      "로그인",
+      "주문조회",
+      "최근본상품",
+      "고객센터"
+    ]
+  },
+  "section": {
+    "title": "NEW! ARRIVALS",
+    "description": "무니그래비가 선택한 새로운 신상품"
+  },
+  "products": [
+    {
+      "id": "p001",
+      "badge": "신상 RELEASE",
+      "productName": "Wide multi-color denim jeans - for Man",
+      "originalPrice": 52000,
+      "discountPrice": 43000,
+      "imageUrl": "/images/jeans.jpg",
+      "link": "/product/wide-multi-color-denim-jeans"
+    },
+    {
+      "id": "p002",
+      "badge": null,
+      "productName": "Alie Twist Knitwear Long Sleeve (Green) - for Women",
+      "originalPrice": 34000,
+      "discountPrice": 23000,
+      "imageUrl": "/images/green_cardigan.jpg",
+      "link": "/product/alie-twist-knitwear"
+    },
+    {
+      "id": "p003",
+      "badge": null,
+      "productName": "Signal heart knitwear White (Free) - for Women",
+      "originalPrice": 28000,
+      "discountPrice": 21000,
+      "imageUrl": "/images/white_sweater.jpg",
+      "link": "/product/signal-heart-knitwear"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>MuniGrabby - 신상품</title>
+  
+  <style>
+    /* 기본 초기화 및 폰트 */
+    body { font-family: sans-serif; margin: 0; padding: 0; color: #333; }
+    a { text-decoration: none; color: inherit; }
+
+    /* 헤더 스타일링 */
+    header { border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    .top-nav { text-align: right; padding: 10px 20px; font-size: 11px; color: #666; }
+    .top-nav a { margin: 0 5px; }
+    .main-header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+    .logo { font-size: 24px; font-weight: 900; font-style: italic; letter-spacing: -1px; }
+    .menu-icon, .header-icons { font-size: 20px; cursor: pointer; }
+
+    /* 신상품 섹션 타이틀 */
+    .new-arrivals { text-align: center; padding: 40px 20px; }
+    .new-arrivals h2 { margin-bottom: 5px; font-size: 18px; letter-spacing: 1px; }
+    .new-arrivals p { color: #888; font-size: 13px; margin-bottom: 40px; }
+
+    /* 상품 그리드 (가로 정렬) */
+    .product-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+    .product-card { width: 300px; text-align: center; }
+
+    /* 상품 이미지와 뱃지, 호버 버튼 */
+    .image-container { position: relative; width: 100%; aspect-ratio: 3/4; background-color: #f0f0f0; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .image-container img { width: 100%; height: 100%; object-fit: cover; }
+
+    .badge { position: absolute; top: 0; left: 0; background: #1a365d; color: white; padding: 10px; font-size: 12px; font-weight: bold; border-radius: 0 0 15px 0; text-align: center; line-height: 1.2; }
+
+    /* 마우스 올렸을 때 나타나는 버튼 */
+    .hover-buttons { position: absolute; display: none; gap: 10px; z-index: 10; }
+    .image-container:hover .hover-buttons { display: flex; } /* 호버 시 나타남 */
+    .hover-buttons button { padding: 8px 18px; border: none; background: rgba(255,255,255,0.7); border-radius: 20px; font-size: 12px; cursor: pointer; font-weight: bold; }
+    .hover-buttons button:hover { background: white; }
+
+    /* 텍스트 정보 (이름, 가격) */
+    .product-name { font-size: 13px; margin-bottom: 8px; color: #555; }
+    .price-container { display: flex; flex-direction: column; align-items: center; }
+    .original-price { text-decoration: line-through; color: #999; margin-bottom: 3px; font-size: 12px; }
+    .discount-price { font-weight: bold; font-size: 14px; }
+  </style>
+
+</head>
+<body>
+
+  <header>
+    <div class="top-nav">
+      <a href="#">회원가입</a> | <a href="#">로그인</a> | <a href="#">주문조회</a> | <a href="#">최근본상품</a> | <a href="#">고객센터</a>
+    </div>
+    <div class="main-header">
+      <div class="menu-icon">☰</div>
+      <div class="logo">MuniGrabby™</div>
+      <div class="header-icons">🔍 👤 🛍️</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="new-arrivals">
+      <h2>NEW! ARRIVALS</h2>
+      <p>무니그래비가 선택한 새로운 신상품</p>
+      
+      <div class="product-grid" id="product-container"></div>
+    </section>
+  </main>
+
+  <script>
+    const productsData = [
+      {
+        id: "p001",
+        badge: "신상<br>RELEASE", 
+        productName: "Wide multi-color denim jeans - for Man",
+        originalPrice: 52000,
+        discountPrice: 43000,
+        imageUrl: "https://via.placeholder.com/300x400/E2E8F0/94A3B8?text=Jeans"
+      },
+      {
+        id: "p002",
+        badge: null,
+        productName: "Alie Twist Knitwear Long Sleeve (Green) - for Women",
+        originalPrice: 34000,
+        discountPrice: 23000,
+        imageUrl: "https://via.placeholder.com/300x400/E2E8F0/94A3B8?text=Green+Cardigan"
+      },
+      {
+        id: "p003",
+        badge: null,
+        productName: "Signal heart knitwear White (Free) - for Women",
+        originalPrice: 28000,
+        discountPrice: 21000,
+        imageUrl: "https://via.placeholder.com/300x400/E2E8F0/94A3B8?text=White+Sweater"
+      }
+    ];
+
+    const container = document.getElementById('product-container');
+
+    productsData.forEach(product => {
+      let badgeHTML = '';
+      if (product.badge) {
+        badgeHTML = `<div class="badge">${product.badge}</div>`;
+      }
+
+      const cardHTML = `
+        <div class="product-card">
+          <div class="image-container">
+            ${badgeHTML}
+            <img src="${product.imageUrl}" alt="상품 이미지">
+            <div class="hover-buttons">
+              <button>WISH</button>
+              <button>ADD</button>
+            </div>
+          </div>
+          <div class="product-name">${product.productName}</div>
+          <div class="price-container">
+            <span class="original-price">${product.originalPrice.toLocaleString()}원</span>
+            <span class="discount-price">${product.discountPrice.toLocaleString()}원</span>
+          </div>
+        </div>
+      `;
+      
+      container.innerHTML += cardHTML;
+    });
+  </script>
+
+</body>
+</html>
